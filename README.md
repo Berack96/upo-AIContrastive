@@ -9,21 +9,21 @@ Utilizzo di Loss Contrastive per migliorare le predizioni di un Classificatore.
 ### Dataset
   - [ ] Splittare il dataset in due parti: L e U.
   - [ ] Usare tutto il Dataset per l'auto encoder
-  - [ ] Usare L per addestrare il classificatore
+  - [X] Usare L per addestrare il classificatore
   - [ ] Prendere i risultati e fare le coppie Positive (sbagliati + classe giusta) e Negative (sbagliati + classe sbagliata). Es. A{a,a,a,b} e B{b,b,a} → (Ab,Bb)+ (Ab,Aa)-
 ### Autoencoder per fare embedding
   - [ ] Cercare Online un modello autoencoder per radiografie (se esiste usarlo). Trovato solo auto encoders per denoising
-  - [ ] Altrimenti fare una architettura usando 3/4 Conv + dense
-  - [ ] L’embedding può essere di 256/128 valori. (metterlo come parametri iniziale)
-  - [ ] Usare l’intero dataset per l’addestramento
-  - [ ] Salvare la rete
+  - [X] Altrimenti fare una architettura usando 3/4 Conv + dense
+  - [X] L’embedding può essere di 256/128 valori. (metterlo come parametri iniziale)
+  - [X] Usare l’intero dataset per l’addestramento
+  - [X] Salvare la rete
   - [ ] Salvare gli embedding e i label
 ### Classificatore 
-  - [ ] Fare un semplice classificatore che prende in input gli embedding
+  - [X] Fare un semplice classificatore che prende in input gli embedding
   - [ ] Il classificatore può essere un semplice MLP con in fondo un Batch Norm
   - [ ] Nel caso usare SVM
-  - [ ] Usare i dati provenienti da L per l’addestramento
-  - [ ] Salvare la rete
+  - [X] Usare i dati provenienti da L per l’addestramento
+  - [X] Salvare la rete
   - [ ] Salvare gli embedding e i risultati del classificatore
 ### Siamese NET
   - [ ] Creare le coppie Positive e Negative.
