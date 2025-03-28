@@ -3,4 +3,5 @@ jax
 jax[cuda12]
 matplotlib
 pandas
+scikit-learn
 tqdm
