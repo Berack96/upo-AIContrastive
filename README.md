@@ -20,17 +20,17 @@ Utilizzo di Loss Contrastive per migliorare le predizioni di un Classificatore.
   - [ ] Salvare gli embedding e i label
 ### Classificatore 
   - [X] Fare un semplice classificatore che prende in input gli embedding
-  - [ ] Il classificatore può essere un semplice MLP con in fondo un Batch Norm
+  - [X] Il classificatore può essere un semplice MLP con in fondo un Batch Norm
   - [ ] Nel caso usare SVM
   - [X] Usare i dati provenienti da L per l’addestramento
   - [X] Salvare la rete
   - [ ] Salvare gli embedding e i risultati del classificatore
 ### Siamese NET
   - [ ] Creare le coppie Positive e Negative.
-    - [ ] Positive: un caso sbagliato (A → B) e un caso corretto (A → A)
-    - [ ] Negative: un caso sbagliato (A → B) e un caso corretto (B → B)
-    - [ ] (?) Prendere solo un subset di quelli etichettati sbagliati
-    - [ ] (?) Prendere solo un subset delle coppie generate
+    - Positive: un caso sbagliato (A → B) e un caso corretto (A → A)
+    - Negative: un caso sbagliato (A → B) e un caso corretto (B → B)
+    - (?) Prendere solo un subset di quelli etichettati sbagliati
+    - (?) Prendere solo un subset delle coppie generate
   - [ ] La rete è una semplice MLP di uno strato più piccolo (comprime) e un Batch Norm
   - [ ] La rete prende in input un solo embedding, ma viene “duplicata”
   - [ ] Usare le coppie di embedding come input
