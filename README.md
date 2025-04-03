@@ -6,38 +6,18 @@ Utilizzo di Loss Contrastive per migliorare le predizioni di un Classificatore.
 > La versione di Python usata è la [3.10.12](https://www.python.org/downloads/release/python-31012/).\
 > Per installare usare il comando: `pip install -r requirements.txt`
 
-### Dataset
-  - [ ] Splittare il dataset in due parti: L e U.
-  - [ ] Usare tutto il Dataset per l'auto encoder
-  - [X] Usare L per addestrare il classificatore
-  - [ ] Prendere i risultati e fare le coppie Positive (sbagliati + classe giusta) e Negative (sbagliati + classe sbagliata). Es. A{a,a,a,b} e B{b,b,a} → (Ab,Bb)+ (Ab,Aa)-
-### Autoencoder per fare embedding
-  - [ ] Cercare Online un modello autoencoder per radiografie (se esiste usarlo). Trovato solo auto encoders per denoising
-  - [X] Altrimenti fare una architettura usando 3/4 Conv + dense
-  - [X] L’embedding può essere di 256/128 valori. (metterlo come parametri iniziale)
-  - [X] Usare l’intero dataset per l’addestramento
-  - [X] Salvare la rete
-  - [ ] Salvare gli embedding e i label
-### Classificatore 
-  - [X] Fare un semplice classificatore che prende in input gli embedding
-  - [X] Il classificatore può essere un semplice MLP con in fondo un Batch Norm
-  - [ ] Nel caso usare SVM
-  - [X] Usare i dati provenienti da L per l’addestramento
-  - [X] Salvare la rete
-  - [ ] Salvare gli embedding e i risultati del classificatore
-### Siamese NET
-  - [ ] Creare le coppie Positive e Negative.
-    - Positive: un caso sbagliato (A → B) e un caso corretto (A → A)
-    - Negative: un caso sbagliato (A → B) e un caso corretto (B → B)
-    - (?) Prendere solo un subset di quelli etichettati sbagliati
-    - (?) Prendere solo un subset delle coppie generate
-  - [ ] La rete è una semplice MLP di uno strato più piccolo (comprime) e un Batch Norm
-  - [ ] La rete prende in input un solo embedding, ma viene “duplicata”
-  - [ ] Usare le coppie di embedding come input
-  - [ ] Il risultato è un embedding corretto
-  - [ ] Usare la Loss Contrastive (quella a batch positivi/totali)
-  - [ ] Mettere la temperatura ma inizialmente lasciarla a 1
-### Test
-- [ ] Usare il dataset Unlabeled
-- [ ] Fare la predizione con embedding semplici
-- [ ] Fare predizione con embedding “corretti”
+### Cose Fatte
+  - [X] Autoencoder: Architettura 3/4 Conv + dense
+  - [X] Autoencoder: L’embedding di 256/64 valori. (messo come parametro iniziale)
+  - [X] Classifier: Semplice MLP con in fondo un BatchNorm
+  - [X] Correction: Semplice MLP denso autoencoder con BatchNorm
+  - [X] Siamese: Rete che prende in input 2 embedding per passarli alla rete Correction
+  - [X] Siamese: Implementazione della loss contrastive semplice oppure [Soft-Nearest Neighbors Loss](https://lilianweng.github.io/posts/2021-05-31-contrastive/#soft-nearest-neighbors-loss)
+
+### TODO
+Possibili implementazioni/migliorie dei modelli che mi vengono in mente, possono essere combinate o usate singolarmente.\
+Li metto qui sotto dato che poi c'è il rischi di dimenticarsele:
+- [ ] Nel caso usare SVM per il classificatore
+- [ ] Modificare la funzione di make_pairs in modo da creare solamente le coppie pensate inizialmente; ovvero prima faccio la classificazione, poi prendo le classi non classificate correttamente e creo una coppia+ andando a prendere una classe classificata correttamente, e una coppia- andando a prendere una classe opposta classificata correttamente
+- [ ] Usare la loss_contrastive per distanziare le embedding _prima_ di addestrare il classificatore (questo perchè la rete nuova modifica troppo(?) gli embedding e il classificatore non capisce quello che viene messo in input)
+- [ ] Usare un VAE per l'autoencoder in modo da evitare che piccole modifiche dello spazio latente possano influenzare troppo la classificazione. In questo modo magari la rete contrastive può modificare gli embedding senza andare a "confondere" il classificatore
