@@ -17,8 +17,10 @@ Dentro la cartella [keras](keras/) invece si possono trovare degli esempi di ker
   - [X] Correction: MLP con BatchNorm ad ogni layer
   - [X] Siamese: Rete che prende in input 2 embedding per passarli alla rete Correction
   - [X] Siamese: Implementazione della loss contrastive semplice
-  - [X] Siamese: Implementazione della [Soft-Nearest Neighbors Loss](https://lilianweng.github.io/posts/2021-05-31-contrastive/#soft-nearest-neighbors-loss)
-  - [X] Siamese: Implementazione della [Sigmoid Contrastive Loss](https://openreview.net/pdf?id=8QCupLGDT9)
+  - [X] Siamese: Implementazione della [Soft-Nearest Neighbors Loss](https://lilianweng.github.io/posts/2021-05-31-contrastive/#soft-nearest-neighbors-loss)\
+      $L_{SNN} = - \tfrac{1}{|B|} \sum_{x_{i} \in B} log \tfrac{\sum_{(x_{i}, x_{j}) \in D_{i}^{+}} e^f(x_{i},x_{j})/\tau}{\sum_{(x_{i}, x_{j}) \in (D_{i}^{+} \cup D_{i}^{-})} e^f(x_{i},x_{j})/\tau}$
+  - [X] Siamese: Implementazione della [Sigmoid Contrastive Loss](https://openreview.net/pdf?id=8QCupLGDT9)\
+      $L_{SL} = - \tfrac{1}{|B|}\sum_{i \in B} \sum_{j \in B (j \neq i)} log \tfrac{1}{1 + e^{z_{ij}(-tf(x_{i},x_{j})+b)}}$
 
 ### TODO
 Possibili implementazioni/migliorie dei modelli che mi vengono in mente, possono essere combinate o usate singolarmente.\
