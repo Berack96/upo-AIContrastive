@@ -22,15 +22,17 @@ uv sync
   - [X] Autoencoder: Architettura 3/4 Conv + dense
   - [X] Autoencoder: L’embedding di 128 valori. (messo come parametro iniziale)
   - [X] Autoencoder: Migliorato usando l'architettura VAE
+  - [X] Autoencoder: Sostituito dalla rete CheXnet che produce embedding migliori
   - [X] Classifier: MLP con BatchNorm ad ogni layer
   - [X] Correction: MLP con BatchNorm ad ogni layer
+  - [X] Correction: Rimosso BatchNorm per Normalizzazione dell'input
   - [X] Siamese: Rete che prende in input 2 embedding per passarli alla rete Correction
   - [X] Siamese: Implementazione della loss contrastive semplice
   - [X] Siamese: Implementazione della [Soft-Nearest Neighbors Loss](https://lilianweng.github.io/posts/2021-05-31-contrastive/#soft-nearest-neighbors-loss)\
       $L_{SNN} = - \tfrac{1}{|B|} \sum_{x_{i} \in B} log \tfrac{\sum_{(x_{i}, x_{j}) \in D_{i}^{+}} e^f(x_{i},x_{j})/\tau}{\sum_{(x_{i}, x_{j}) \in (D_{i}^{+} \cup D_{i}^{-})} e^f(x_{i},x_{j})/\tau}$
   - [X] Siamese: Implementazione della [Sigmoid Contrastive Loss](https://openreview.net/pdf?id=8QCupLGDT9)\
       $L_{SL} = - \tfrac{1}{|B|}\sum_{i \in B} \sum_{j \in B (j \neq i)} log \tfrac{1}{1 + e^{z_{ij}(-tf(x_{i},x_{j})+b)}}$
-  - [X] Classifier: Riaddestramento del classificatore per controllare se la tecnica funziona
+  - [X] Classifier New: Riaddestramento del classificatore per controllare se la tecnica funziona
 
 ### Osservazioni
   - Il metodo di scelta di stop è fatto dopo N epoche e il modello salvato è quello che ha performato meglio nel validation
