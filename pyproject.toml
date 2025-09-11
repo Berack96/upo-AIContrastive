@@ -1,0 +1,16 @@
+[project]
+name = "upo-ai-contrastive"
+version = "0.1.0"
+description = "AI Contrastive Learning Project"
+requires-python = "==3.10.12"
+dependencies = [
+    "keras",
+    "jax[cuda12]",
+    "matplotlib",
+    "pandas",
+    "scikit-learn",
+    "pydot",
+    "tqdm",
+    "ipykernel",
+]
+

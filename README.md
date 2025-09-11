@@ -2,12 +2,21 @@
 Progetto per la tesi magistrale.\
 Utilizzo di Loss Contrastive per migliorare le predizioni di un Classificatore.
 
-> [!IMPORTANT]
-> La versione di Python usata è la [3.10.12](https://www.python.org/downloads/release/python-31012/).\
-> Per installare usare il comando: `pip install -r requirements.txt`
-
 I files si trovano dentro la directory [src](src/) e sono tutti dei python notebook.\
 Dentro la cartella [keras](keras/) invece si possono trovare degli esempi di keras usati per costruire le reti.
+
+### Installazione e Setup
+> [!IMPORTANT]  
+> Questo progetto usa [uv](https://docs.astral.sh/uv/) per la gestione delle dipendenze.
+> Ogni notebook è impostato per usare l'ambiente creato in questo modo.
+
+```bash
+# Installa uv se non ce l'hai
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Crea e attiva l'ambiente virtuale
+uv sync
+```
 
 ### Cose Fatte
   - [X] Autoencoder: Architettura 3/4 Conv + dense

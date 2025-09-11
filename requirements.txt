@@ -1,8 +1,0 @@
-keras
-jax
-jax[cuda12]
-matplotlib
-pandas
-scikit-learn
-pydot
-tqdm
