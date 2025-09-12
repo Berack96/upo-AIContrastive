@@ -45,3 +45,4 @@ uv sync
   - Purtroppo però, praticamente sempre dopo l'addestramento contrastive, il classificatore sbaglia prevedendo o una o l'altra classe usando i nuovi embedding.
   - Riaddestrando il classificatore sui nuovi embedding, non riesce comunque ad essere migliore di come era inizialmente
   - Nonostante i continui tentativi, la tecnica sembra essere inefficace.
+  - È probabile che si debba andare a prendere i punti "a metà" (ovvero quelli che vengono classificati con una certezza non altissima) e fare il training anche su di essi oppure rimuoverli dal pool di embedding classificati correttamente
