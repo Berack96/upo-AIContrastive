@@ -176,7 +176,10 @@ cython_debug/
 
 # Mine
 datasets
-models
+
+models/*
+!models/CheXNet.keras
+
 docs/
 .venv*
 .vscode/
