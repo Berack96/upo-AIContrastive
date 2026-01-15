@@ -175,10 +175,10 @@ cython_debug/
 
 
 # Mine
-datasets
+/datasets
 
-models/*
-!models/CheXNet.keras
+/models/*
+/!models/CheXNet.keras
 
 docs/
 .venv*
