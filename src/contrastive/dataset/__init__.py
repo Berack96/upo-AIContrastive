@@ -1,6 +1,6 @@
 import logging
-
 import numpy as np
+import numpy.typing as npt
 
 
 
@@ -22,14 +22,14 @@ class DatasetCachedData:
     '''
     def __init__(self, path: str):
         self.path = path
-        self.x_train: np.ndarray = None
-        self.y_train: np.ndarray = None
-        self.x_val: np.ndarray = None
-        self.y_val: np.ndarray = None
-        self.x_test: np.ndarray = None
-        self.y_test: np.ndarray = None
+        self.x_train: npt.NDArray[np.float64] = None  # type: ignore
+        self.y_train: npt.NDArray[np.int_] = None  # type: ignore
+        self.x_val: npt.NDArray[np.float64] = None  # type: ignore
+        self.y_val: npt.NDArray[np.int_] = None  # type: ignore
+        self.x_test: npt.NDArray[np.float64] = None  # type: ignore
+        self.y_test: npt.NDArray[np.int_] = None  # type: ignore
         self.latent_space: int = 0
-    
+
     def load(self):
         dataset = np.load(self.path, allow_pickle=True)
         self.x_train = dataset['x_train']
@@ -58,10 +58,10 @@ class Dataset:
     Attributes:
         name (str): Name of the dataset.
     '''
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
         self.cache = DATASET_ROOT + self.name + "_embeddings.npz"
-        self.data = None
+        self.data: DatasetCachedData | None = None
 
     def load_data_cached(self) -> bool:
         '''
@@ -73,11 +73,13 @@ class Dataset:
         '''
         try:
             self.data = DatasetCachedData(self.cache)
+            self.data.load()
             log.info(f"Loaded dataset '{self.name}' from cache.")
             return True
         except FileNotFoundError:
             log.error(f"Cache file for dataset '{self.name}' not found.")
             self.data = self.build_data()
+            self.save_data_cached()
             return False
 
     def save_data_cached(self):
